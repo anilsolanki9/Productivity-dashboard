@@ -247,7 +247,14 @@ dailyGoals();
 
 function weatherFunctionality() {
   const APIkey = `2be78eea8cc34d8f91540933252412`;
-  let city = 'jodhpur';
+
+  let city = 'Jodhpur';
+  if (localStorage.getItem('city')) {
+    city = localStorage.getItem('city');
+  } else {
+    city = 'Jodhpur';
+    localStorage.setItem('city', city);
+  }
 
   let header = document.querySelector('.allElems header');
   let date = document.querySelector('header .header1 .date');
@@ -258,6 +265,12 @@ function weatherFunctionality() {
   let precipitation = document.querySelector('header .header2 .precipitation');
   let humidity = document.querySelector('header .header2 .humidity');
   let wind = document.querySelector('header .header2 .wind');
+
+  currentLocation.addEventListener('click', function () {
+    city = prompt('Enter Your City');
+    localStorage.setItem('city', city);
+    weatherFunctionality();
+  });
 
   async function weatherAPI() {
     let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${APIkey}&q=${city}`);
@@ -340,6 +353,13 @@ function themeChange() {
 
   if (localStorage.getItem('currentTheme')) {
     currentTheme = JSON.parse(localStorage.getItem('currentTheme'));
+    rootElement.style.setProperty('--pri', currentTheme[0]);
+    rootElement.style.setProperty('--sec', currentTheme[1]);
+    rootElement.style.setProperty('--tri1', currentTheme[2]);
+    rootElement.style.setProperty('--tri2', currentTheme[3]);
+    flag = currentTheme[4];
+  } else {
+    currentTheme = ['#f8f4e1', '#381c0a', '#feba17', '#74512d', 0];
     rootElement.style.setProperty('--pri', currentTheme[0]);
     rootElement.style.setProperty('--sec', currentTheme[1]);
     rootElement.style.setProperty('--tri1', currentTheme[2]);

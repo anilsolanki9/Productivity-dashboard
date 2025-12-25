@@ -1,12 +1,12 @@
 :root {
-  --pri: #f8f4e1;
+  /* --pri: #f8f4e1;
   --sec: #381c0a;
   --tri1: #feba17;
-  --tri2: #74512d;
+  --tri2: #74512d; */
   --red: red;
   --green: rgb(26, 190, 100);
   --blue: rgb(0, 149, 255);
-} 
+}
 
 @font-face {
   font-family: aeonik;
@@ -187,6 +187,13 @@ header .header1 .current-location {
   font-size: 20px;
   font-weight: 400;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.502);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+header .header1 .current-location:hover {
+  color: var(--tri2);
 }
 
 header .header2 {
