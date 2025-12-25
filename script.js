@@ -248,7 +248,7 @@ dailyGoals();
 function weatherFunctionality() {
   const APIkey = `2be78eea8cc34d8f91540933252412`;
 
-  let city = 'Jodhpur';
+  let city = null;
   if (localStorage.getItem('city')) {
     city = localStorage.getItem('city');
   } else {
